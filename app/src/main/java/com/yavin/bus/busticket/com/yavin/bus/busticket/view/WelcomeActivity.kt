@@ -1,6 +1,8 @@
 package com.yavin.bus.busticket.com.yavin.bus.busticket.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.yavin.bus.busticket.R
@@ -17,4 +19,9 @@ class WelcomeActivity : BaseActivity() {
         backgroundImage.startAnimation(sideAnimation)
     }
 
+
+    fun startPurchasingActivity(view: View) {
+        val intent = Intent(this, PurchasingActivity::class.java)
+        startActivity(intent)
+    }
 }

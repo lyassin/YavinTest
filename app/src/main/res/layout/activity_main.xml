@@ -17,12 +17,13 @@
             android:layout_height="wrap_content"
             android:src="@drawable/yavin_logo"
             />
-        <TextView
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select langage or tap screen to continue" />
+            android:text="Start"
+            android:onClick="startPurchasingActivity"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
