@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
-            android:name="ticketOptions"
-            android:type="com.yavin.bus.busticket.com.yavin.bus.busticket.TicketOptions"/>
+            name="ticketOptions"
+            type="com.yavin.bus.busticket.com.yavin.bus.busticket.viewmodel.PurchasingViewModel" />
     </data>
 
     <LinearLayout
@@ -15,20 +15,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/logo_icon"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/logo_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/yavin_logo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/yavin_logo"
-            />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Please add items to your cart" />
+            android:layout_gravity="center_horizontal"
+            android:text="Please add items to your cart" />
 
         <TextView
             android:id="@+id/singlejourney"
@@ -36,79 +40,130 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Single journey ticket sold for 1,10:" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/addsinglejourney"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> ticketOptions.singlejourney++}"
-            android:text="+" />
-        <Button
-            android:id="@+id/removesinglejourney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> ticketOptions.singlejourney--}"
-            android:text="-" />
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextsinglejourney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="@={ticketOptions.inputSingleJourney}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Total:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@={ticketOptions.totalSingleJourney}" />
+
+        </LinearLayout>
+
         <TextView
-            android:layout_height="wrap_content"
+            android:id="@+id/dayticket"
             android:layout_width="wrap_content"
-            android:text="@{ticketOptions.singlejourney}"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Day ticket sold for 2,50 €:" />
 
-    <TextView
-        android:id="@+id/dayticket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Day ticket sold for 2,50 €:" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/adddayticket"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="+" />
-        <Button
-            android:id="@+id/removedayticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-" />
-    </LinearLayout>
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/weekticket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Week ticket sold for 12 €:" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/addweekticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
-        <Button
-            android:id="@+id/removeweekticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-" />
-    </LinearLayout>
-    <Button
-        android:id="@+id/valid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Order" />
+            <EditText
+                android:id="@+id/editTextdayticket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="@={ticketOptions.inputDayTicket}" />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Total:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@={ticketOptions.totalDayTicket}" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/weekticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Week ticket sold for 12 €:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextweekticket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="@={ticketOptions.inputWeekTicket}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Total:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@={ticketOptions.totalWeekTicket}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@={ticketOptions.totalTicketPrice}" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/valid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Order" />
+    </LinearLayout>
+</layout>
