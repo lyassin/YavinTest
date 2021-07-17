@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".com.yavin.bus.busticket.view.PurchasingActivity"
-            android:parentActivityName=".com.yavin.bus.busticket.view.WelcomeActivity">
+            android:parentActivityName=".com.yavin.bus.busticket.view.WelcomeActivity"
+            android:exported="true">
         </activity>
 
     </application>

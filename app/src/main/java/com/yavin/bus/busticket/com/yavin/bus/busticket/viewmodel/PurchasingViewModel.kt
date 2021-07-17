@@ -1,8 +1,9 @@
 package com.yavin.bus.busticket.com.yavin.bus.busticket.viewmodel
 
-import androidx.lifecycle.*
 import androidx.databinding.Bindable
+import androidx.lifecycle.*
 import kotlin.math.round
+
 
 class PurchasingViewModel : ViewModel() {
 
@@ -52,7 +53,7 @@ class PurchasingViewModel : ViewModel() {
         var price: Double = ((totalSingleJourney.value)?.toDouble() ?: 0.0)
         price += (totalDayTicket.value)?.toDouble() ?: 0.0
         price += (totalWeekTicket.value)?.toDouble() ?: 0.0
-        totalTicketPrice.value = round(price).toString()
+        totalTicketPrice.value = (price).toString()
     }
 
     init {
@@ -66,6 +67,8 @@ class PurchasingViewModel : ViewModel() {
 
     override fun onCleared() {
         inputSingleJourney.removeObserver(inputSingleJourneyObserver)
+        inputDayTicket.removeObserver(inputDayTicketObserver)
+        inputWeekTicket.removeObserver(inputWeekTicketObserver)
         super.onCleared()
     }
 
